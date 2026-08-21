@@ -14,8 +14,7 @@ El objetivo fue combinar conocimientos contables y financieros con herramientas 
 - Equity / Assets 2024: **78,9%**.
 - Principal indicador a monitorear: **Stock-Based Compensation**.
 
-**Herramientas:** PostgreSQL · SQL · Power Query · Power BI · DAX  
-**Fuente de datos:** SEC EDGAR / XBRL
+**Herramientas:** PostgreSQL · SQL · Power Query · Power BI · DAX · SEC EDGAR / XBRL
 
 ### Overview
 
