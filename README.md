@@ -1,5 +1,7 @@
 # Financial Investment Analytics - Palantir Technologies
 
+**Santiago Vazquez**
+
 Proyecto de análisis financiero desarrollado con información real de **Palantir Technologies** publicada en **SEC EDGAR**.
 
 El objetivo fue combinar conocimientos contables y financieros con herramientas de Data Analytics para evaluar la evolución de la compañía desde una perspectiva de inversión, analizando **crecimiento, rentabilidad, generación de caja, liquidez y estructura patrimonial**.
