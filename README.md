@@ -17,9 +17,19 @@ El objetivo fue combinar conocimientos contables y financieros con herramientas 
 **Herramientas:** PostgreSQL · SQL · Power Query · Power BI · DAX  
 **Fuente de datos:** SEC EDGAR / XBRL
 
+### Overview
+
 ![Overview Dashboard](screenshots/00_dashboard_overview.png)
 
+---
+
+### Profitability & Growth
+
 ![Profitability & Growth Dashboard](screenshots/08_dashboard_profitability_growth.png)
+
+---
+
+### Financial Position & Cash Flow
 
 ![Financial Position & Cash Flow Dashboard](screenshots/09_dashboard_financial_position.png)
 
