@@ -82,8 +82,6 @@ El análisis se concentra en:
 3. **PostgreSQL:** carga y organización de los datos para realizar consultas y análisis con SQL.
 4. **Power BI:** conexión de las tablas financieras, creación de `Dim_Year`, medidas DAX y desarrollo del dashboard.
 
-<details>
-  <summary><b>Ver detalle técnico del proyecto</b></summary>
 
 ### Transformación en Power Query
 
