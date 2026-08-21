@@ -110,7 +110,24 @@ Income Statement, Balance Sheet y Cash Flow fueron relacionadas mediante una dim
 
 ![Power BI Data Model](screenshots/06_powerbi_data_model.png)
 
-</details>
+### Medidas DAX
+
+A partir del modelo de datos se desarrollaron medidas DAX para construir los principales indicadores financieros utilizados en los dashboards.
+
+Entre las métricas calculadas se incluyen:
+
+- Revenue y Revenue Growth %
+- Gross, Operating y Net Margin
+- Operating Cash Flow y Free Cash Flow
+- ROA y ROE
+- EBITDA y EBITDA Margin
+- Current Ratio y Working Capital
+- Equity / Assets
+- Stock-Based Compensation y SBC / Revenue
+
+Las medidas fueron diseñadas para responder dinámicamente al año seleccionado y permitir el análisis histórico de la compañía.
+
+![DAX Free Cash Flow](screenshots/07_dax_free_cash_flow.png)
 
 ---
 
