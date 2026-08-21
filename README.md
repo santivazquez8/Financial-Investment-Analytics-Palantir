@@ -2,9 +2,9 @@
 
 Proyecto de análisis financiero desarrollado con información real de **Palantir Technologies** publicada en **SEC EDGAR**.
 
-El objetivo fue combinar conocimientos contables y financieros con herramientas de Data Analytics para analizar la compañía desde una perspectiva de inversión, evaluando **crecimiento, rentabilidad, generación de caja, liquidez y estructura patrimonial**.
+El objetivo fue combinar conocimientos contables y financieros con herramientas de Data Analytics para evaluar **crecimiento, rentabilidad, generación de caja, liquidez y estructura patrimonial** desde una perspectiva de inversión.
 
-### Principales resultados
+### Resultados principales
 
 - Revenue: **USD 1,54B → USD 4,48B** entre 2021 y 2025.
 - Revenue Growth 2025: **+56,18%**.
@@ -20,37 +20,35 @@ El objetivo fue combinar conocimientos contables y financieros con herramientas 
 
 ---
 
-## Objetivo del Proyecto
+## Objetivo
 
-El análisis buscó responder una pregunta principal:
+Analizar la evolución financiera de Palantir y detectar señales relevantes para un potencial inversor.
 
-**¿Cómo evolucionó la situación financiera de Palantir y qué señales pueden resultar relevantes para un potencial inversor?**
+El proyecto se enfoca en:
 
-Se analizaron principalmente:
-
-- crecimiento de ingresos;
-- evolución de resultados y márgenes;
-- generación de flujo de efectivo;
+- crecimiento y rentabilidad;
+- márgenes;
+- generación de caja;
 - liquidez y capital de trabajo;
-- rentabilidad sobre activos y patrimonio;
+- ROA y ROE;
 - estructura patrimonial;
 - Stock-Based Compensation.
 
-El proyecto analiza la calidad financiera del negocio y no busca determinar si la acción está cara o barata ni emitir una recomendación de compra o venta.
+El análisis no incluye valuación de la acción ni una recomendación de compra o venta.
 
 ---
 
 ## Datos y Preparación
 
-Los datos fueron obtenidos desde **SEC EDGAR**, utilizando la información financiera estructurada en formato **XBRL** correspondiente a Palantir Technologies.
+Los datos fueron obtenidos desde **SEC EDGAR** mediante información financiera estructurada en formato **XBRL**.
 
-El archivo original fue procesado en Power Query y separado en tres estados financieros:
+La información fue transformada en Power Query y separada en:
 
 - Income Statement
 - Balance Sheet
 - Cash Flow Statement
 
-Luego, los datos limpios fueron exportados como CSV y cargados en PostgreSQL.
+Luego, los datos limpios fueron cargados en PostgreSQL para realizar el análisis con SQL y posteriormente conectados a Power BI.
 
 **Flujo del proyecto:**
 
@@ -58,13 +56,11 @@ Luego, los datos limpios fueron exportados como CSV y cargados en PostgreSQL.
 
 ![Power Query Transformation](screenshots/03_power_query_transformation.png)
 
-Los archivos utilizados se encuentran disponibles en las carpetas `data/raw/` y `data/clean/`.
-
 ---
 
 ## Análisis con SQL
 
-Sobre las tablas de PostgreSQL se desarrollaron consultas orientadas a analizar:
+Sobre las tablas de PostgreSQL se realizaron consultas para analizar:
 
 1. Evolución de Revenue y crecimiento interanual.
 2. Gross Profit, Operating Income y Net Income.
@@ -75,30 +71,19 @@ Sobre las tablas de PostgreSQL se desarrollaron consultas orientadas a analizar:
 
 ![SQL Revenue Analysis](screenshots/05_sql_revenue_analysis.png)
 
-Entre los principales resultados se observó una fuerte aceleración del crecimiento, el paso de pérdidas a resultados positivos desde 2023 y una mejora significativa en la generación de caja.
+Las consultas completas se encuentran disponibles en la carpeta `sql/`.
 
 ---
 
 ## Modelo y Métricas en Power BI
 
-Las tablas finales de PostgreSQL fueron conectadas a Power BI y relacionadas mediante una dimensión común de años (`Dim_Year`).
+Las tablas de Income Statement, Balance Sheet y Cash Flow fueron relacionadas mediante una dimensión común de años (`Dim_Year`).
 
 ![Power BI Data Model](screenshots/06_powerbi_data_model.png)
 
-También se desarrollaron medidas DAX para construir indicadores como:
+Se desarrollaron medidas DAX para calcular indicadores como:
 
-- Revenue Growth
-- Gross, Operating y Net Margin
-- Operating Cash Flow
-- Free Cash Flow
-- ROA y ROE
-- EBITDA
-- Current Ratio
-- Working Capital
-- Equity / Assets
-- Stock-Based Compensation
-
-Estas métricas alimentan los KPIs y gráficos utilizados en las tres páginas del dashboard.
+**Revenue Growth · Margins · Free Cash Flow · ROA · ROE · EBITDA · Current Ratio · Working Capital · Equity / Assets · Stock-Based Compensation**
 
 ---
 
@@ -106,29 +91,21 @@ Estas métricas alimentan los KPIs y gráficos utilizados en las tres páginas d
 
 El dashboard fue dividido en tres páginas.
 
-### 1. Overview
+### Overview
 
-Presenta una lectura rápida de:
+Resumen de Revenue, Net Income, Operating Cash Flow, Free Cash Flow, márgenes e Investment Signals.
 
-- Revenue
-- Net Income
-- Operating Cash Flow
-- Free Cash Flow
-- márgenes;
-- crecimiento;
-- principales Investment Signals.
+La captura completa se muestra al comienzo del README.
 
-La captura completa del Overview se muestra al inicio del README.
+### Profitability & Growth
 
-### 2. Profitability & Growth
-
-Profundiza el análisis de crecimiento y rentabilidad mediante Revenue Growth, márgenes, Gross Profit, Operating Income, Net Income, ROA, ROE y EBITDA.
+Análisis de crecimiento, márgenes, Operating Income, Net Income, ROA, ROE y EBITDA.
 
 ![Profitability & Growth Dashboard](screenshots/08_dashboard_profitability_growth.png)
 
-### 3. Financial Position & Cash Flow
+### Financial Position & Cash Flow
 
-Analiza liquidez, capital de trabajo, estructura patrimonial, Free Cash Flow y Stock-Based Compensation.
+Análisis de liquidez, estructura patrimonial, capital de trabajo, Free Cash Flow y Stock-Based Compensation.
 
 ![Financial Position & Cash Flow Dashboard](screenshots/09_dashboard_financial_position.png)
 
@@ -136,36 +113,87 @@ Analiza liquidez, capital de trabajo, estructura patrimonial, Free Cash Flow y S
 
 ## Principales Insights
 
-- **Crecimiento:** Revenue aumentó de **USD 1,54B en 2021 a USD 4,48B en 2025**, con un crecimiento interanual de **56,18% en 2025**.
+### 1. Crecimiento acelerado
 
-- **Rentabilidad:** Palantir pasó de pérdidas operativas y netas en 2021-2022 a resultados positivos desde 2023. En 2025 alcanzó aproximadamente **USD 1,41B de Operating Income** y **USD 1,63B de Net Income**.
+Revenue aumentó de aproximadamente **USD 1,54B en 2021 a USD 4,48B en 2025**.
 
-- **Generación de caja:** Operating Cash Flow alcanzó aproximadamente **USD 2,13B** y Free Cash Flow **USD 2,10B en 2025**, mostrando una fuerte capacidad de generación de fondos.
+El crecimiento se aceleró hacia el final del período y alcanzó **56,18% interanual en 2025**, el mayor crecimiento registrado entre los años analizados.
 
-- **Solidez financiera:** en 2024 la compañía presentó un **Current Ratio de 5,96**, Working Capital de aproximadamente **USD 4,94B** y un **Equity / Assets de 78,9%**.
+### 2. Transición hacia una compañía rentable
 
-- **Riesgo a monitorear:** Stock-Based Compensation continúa siendo relevante por su posible impacto sobre la dilución de los accionistas, aunque hacia el final del período el Free Cash Flow creció considerablemente más rápido.
+Palantir registraba pérdidas operativas y netas en 2021 y 2022, pero pasó a resultados positivos desde 2023.
+
+En 2025 alcanzó aproximadamente:
+
+- **Operating Income:** USD 1,41B.
+- **Net Income:** USD 1,63B.
+- **Operating Margin:** 31,59%.
+- **Net Margin:** 36,52%.
+
+El crecimiento de los ingresos comenzó a traducirse en una mejora significativa de los resultados.
+
+### 3. Márgenes elevados y en expansión
+
+Gross Margin se mantuvo por encima del 78% durante todo el período y alcanzó aproximadamente **82,37% en 2025**.
+
+La mejora de Operating Margin y Net Margin muestra una mayor capacidad para convertir el crecimiento de ingresos en beneficios.
+
+### 4. Fuerte generación de caja
+
+Operating Cash Flow alcanzó aproximadamente **USD 2,13B en 2025**, mientras que Free Cash Flow llegó a **USD 2,10B**.
+
+La pequeña diferencia entre ambas métricas se explica por un nivel de CapEx relativamente bajo, lo que permite que gran parte del efectivo generado por las operaciones quede disponible como Free Cash Flow.
+
+### 5. Mejora de la rentabilidad sobre activos y patrimonio
+
+ROA y ROE pasaron de valores negativos a positivos durante el período analizado.
+
+En 2024 alcanzaron aproximadamente:
+
+- **ROA:** 8,6%.
+- **ROE:** 11,0%.
+
+Esto muestra una mejora en la capacidad de la compañía para generar resultados utilizando sus activos y el patrimonio de los accionistas.
+
+### 6. Posición financiera sólida
+
+En 2024 Palantir presentó:
+
+- **Current Ratio:** 5,96.
+- **Working Capital:** aproximadamente USD 4,94B.
+- **Equity / Assets:** 78,9%.
+
+Los activos corrientes superan ampliamente a los pasivos corrientes y el patrimonio tiene un peso elevado dentro de la estructura financiera.
+
+### 7. Stock-Based Compensation como indicador a monitorear
+
+Stock-Based Compensation continúa siendo relevante por su posible efecto de dilución sobre los accionistas.
+
+Sin embargo, hacia el final del período la generación de caja creció mucho más rápido:
+
+- **Free Cash Flow 2025:** USD 2,10B.
+- **Stock-Based Compensation 2025:** USD 0,68B.
+
+Esto mejora considerablemente la relación entre generación de caja y compensación basada en acciones respecto de los primeros años analizados.
 
 ---
 
 ## Metodología y Limitaciones
 
-- Income Statement y Cash Flow abarcan **2021-2025**.
-- Balance Sheet se analiza entre **2021-2024**, según la disponibilidad de los conceptos XBRL seleccionados.
-- ROA y ROE se calcularon utilizando activos y patrimonio promedio, por lo que se muestran entre **2022-2024**.
-- EBITDA fue calculado como **Operating Income + Depreciation & Amortization** y no corresponde al Adjusted EBITDA informado por Palantir.
-- Free Cash Flow fue calculado como **Operating Cash Flow - CapEx**.
-- Total Liabilities se interpreta como Pasivo Total y no como deuda financiera.
+- Income Statement y Cash Flow: **2021-2025**.
+- Balance Sheet: **2021-2024**.
+- ROA y ROE: **2022-2024**, utilizando activos y patrimonio promedio.
+- EBITDA = **Operating Income + Depreciation & Amortization**.
+- Free Cash Flow = **Operating Cash Flow - CapEx**.
+- Las métricas EBITDA y FCF pueden diferir de las métricas ajustadas publicadas por Palantir.
 
 ---
 
 ## Conclusión
 
-Durante el período analizado, Palantir mostró una combinación de **fuerte crecimiento, mejora de rentabilidad, expansión de márgenes, creciente generación de Free Cash Flow y una posición financiera sólida**.
+Palantir mostró durante el período analizado una combinación de **fuerte crecimiento, mejora de rentabilidad, elevada generación de caja y una posición financiera sólida**.
 
-El Stock-Based Compensation continúa siendo uno de los principales indicadores a monitorear desde la perspectiva del accionista.
-
-El proyecto se concentra en el análisis financiero del negocio. Una posible extensión futura sería incorporar **valuación, comparación con competidores y un modelo DCF**.
+El Stock-Based Compensation continúa siendo un indicador relevante a monitorear. El proyecto analiza la calidad financiera del negocio, sin incorporar todavía una valuación de la acción.
 
 ---
 
